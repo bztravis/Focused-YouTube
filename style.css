@@ -1,4 +1,8 @@
-/* video page */
+/* video page **************************************************************************************************************/
+
+.ytp-endscreen-content {
+    display: none;
+}
 
 
 /* wide screens */
@@ -24,7 +28,44 @@ ytd-live-chat-frame#chat {
 }
 
 
+/* MISC UI ******************************************************************************************************************/
 
+/* Create & notifications buttons top bar */
+#buttons > ytd-topbar-menu-button-renderer.style-scope.ytd-masthead.style-default {
+    display: none;
+}
+#buttons.ytd-masthead>*.ytd-masthead:not(:last-child) {
+    display: none;
+}
+
+/* sidebar menus content */
+  
+#sections > ytd-guide-section-renderer:nth-child(2) {
+    display: none;
+}
+
+#sections > ytd-guide-section-renderer:nth-child(3) {
+    display: none;
+}
+
+#sections > ytd-guide-section-renderer:nth-child(4) {
+    display: none;
+}
+
+#footer {
+    display: none;
+}
+
+
+/* CHANNEL CONTENT ***********************************************************************************************************/
+
+/* channel home content */
+ytd-browse[page-subtype~=channels] ytd-two-column-browse-results-renderer.ytd-browse {
+    display: none;
+  }
+
+
+/* HOME CONTENT **************************************************************************************************************/
 
 /* home thumbnail content */
 .style-scope.ytd-rich-grid-row {
@@ -69,4 +110,9 @@ ytd-rich-shelf-renderer {
 ytd-brand-video-singleton-renderer {
     opacity: 0;
     pointer-events: none;
+}
+
+/* video feedback cards */
+#content > ytd-inline-survey-renderer {
+    opacity: 0;
 }

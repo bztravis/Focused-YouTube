@@ -1,21 +1,23 @@
 const forceTheater = setInterval(function() {
     let video = document.querySelector('.html5-video-container')
-    let theaterActive = video.offsetWidth == window.innerWidth
+    if (video) {
+        let theaterActive = video.offsetWidth == window.innerWidth
 
-    let tBtn = document.getElementsByClassName('ytp-size-button')
-    button = tBtn[0]
+        let tBtn = document.getElementsByClassName('ytp-size-button')
+        button = tBtn[0]
 
-    if (button != null) {
-        if (!theaterActive) {        
-            button.click()
-        }
+        if (button != null) {
+            if (!theaterActive) {        
+                button.click()
+            }
 
-        button.remove()
+            button.remove()
 
-        if (theaterActive) {
-            clearInterval(forceTheater)
-        }
+            if (theaterActive) {
+                clearInterval(forceTheater)
+            }
     }
+}
 
 }, 1000)
 
