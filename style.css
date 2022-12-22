@@ -1,118 +1,118 @@
 /* video page **************************************************************************************************************/
 
 .ytp-endscreen-content {
-    display: none;
+  display: none;
 }
-
 
 /* wide screens */
 
 #secondary.style-scope.ytd-watch-flexy {
-    display: none;
+  display: none;
 }
 
-ytd-watch-flexy[flexy][is-two-columns_][is-extra-wide-video_] #primary.ytd-watch-flexy, ytd-watch-flexy[flexy][is-two-columns_][is-four-three-to-sixteen-nine-video_] #primary.ytd-watch-flexy {
-    max-width: none !important;
+ytd-watch-flexy[flexy][is-two-columns_][is-extra-wide-video_]
+  #primary.ytd-watch-flexy,
+ytd-watch-flexy[flexy][is-two-columns_][is-four-three-to-sixteen-nine-video_]
+  #primary.ytd-watch-flexy {
+  max-width: none !important;
 }
-
 
 /* narrow screens */
 
 #related {
-    display: none;
+  display: none;
 }
 
 /* chat */
 ytd-live-chat-frame#chat {
-    display: none;
+  display: none;
 }
-
 
 /* MISC UI ******************************************************************************************************************/
 
 /* Create & notifications buttons top bar */
-#buttons > ytd-topbar-menu-button-renderer.style-scope.ytd-masthead.style-default {
-    display: none;
+#buttons
+  > ytd-topbar-menu-button-renderer.style-scope.ytd-masthead.style-default {
+  display: none;
 }
-#buttons.ytd-masthead>*.ytd-masthead:not(:last-child) {
-    display: none;
+#buttons.ytd-masthead > *.ytd-masthead:not(:last-child) {
+  display: none;
 }
 
 /* sidebar menus content */
-  
+
 #sections > ytd-guide-section-renderer:nth-child(2) {
-    display: none;
+  display: none;
 }
 
 #sections > ytd-guide-section-renderer:nth-child(3) {
-    display: none;
+  display: none;
 }
 
 #sections > ytd-guide-section-renderer:nth-child(4) {
-    display: none;
+  display: none;
 }
 
 #footer {
-    display: none;
+  display: none;
 }
-
 
 /* CHANNEL CONTENT ***********************************************************************************************************/
 
 /* channel home content */
-ytd-browse[page-subtype~=channels] ytd-two-column-browse-results-renderer.ytd-browse {
-    display: none;
-  }
-
+/* ytd-browse[page-subtype~='channels']
+  ytd-two-column-browse-results-renderer.ytd-browse {
+  display: none;
+} */
 
 /* HOME CONTENT **************************************************************************************************************/
 
 /* home thumbnail content */
 .style-scope.ytd-rich-grid-row {
-    opacity: 0;
-    pointer-events: none;
+  opacity: 0;
+  pointer-events: none;
 }
 
 /* home shorts content */
 .style-scope.ytd-rich-shelf-renderer {
-    opacity: 0;
-    pointer-events: none;
+  opacity: 0;
+  pointer-events: none;
 }
 
 /* try YouTube TV dismissable */
 .style-scope.ytd-compact-promoted-item-renderer {
-    opacity: 0;
-    pointer-events: none;
+  opacity: 0;
+  pointer-events: none;
 }
 
 /* ghost cards */
 ytd-continuation-item-renderer {
-    opacity: 0;
-    pointer-events: none;
+  opacity: 0;
+  pointer-events: none;
 }
 
 /* home categories */
 .style-scope.ytd-feed-filter-chip-bar-renderer {
-    opacity: 0;
-    pointer-events: none;
+  opacity: 0;
+  pointer-events: none;
 }
 
 /* home shelf borders */
 ytd-rich-shelf-renderer {
-    border-width: 0 !important;
+  border-width: 0 !important;
 }
 
 /* YouTube featured */
 #big-yoodle {
-    opacity: 0;
-    pointer-events: none;
+  opacity: 0;
+  pointer-events: none;
 }
 ytd-brand-video-singleton-renderer {
-    opacity: 0;
-    pointer-events: none;
+  opacity: 0;
+  pointer-events: none;
 }
 
 /* video feedback cards */
 #content > ytd-inline-survey-renderer {
-    opacity: 0;
+  opacity: 0;
 }

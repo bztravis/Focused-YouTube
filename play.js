@@ -1,27 +1,54 @@
-const forceTheater = setInterval(function() {
-    let video = document.querySelector('.html5-video-container')
-    if (video) {
-        let theaterActive = video.offsetWidth == window.innerWidth
+// import popupJS from './popup'
 
-        let tBtn = document.getElementsByClassName('ytp-size-button')
-        button = tBtn[0]
+// alert(popupJS)
 
-        if (button != null) {
-            if (!theaterActive) {        
-                button.click()
-            }
+const forceTheater = setInterval(function () {
+  let video = document.querySelector('.html5-video-container')
+  if (video) {
+    let theaterActive = video.offsetWidth == window.innerWidth
 
-            button.remove()
+    let tBtn = document.getElementsByClassName('ytp-size-button')
+    button = tBtn[0]
 
-            if (theaterActive) {
-                clearInterval(forceTheater)
-            }
+    if (button != null) {
+      if (!theaterActive) {
+        button.click()
+      }
+
+      button.remove()
+
+      if (theaterActive) {
+        clearInterval(forceTheater)
+      }
     }
-}
+  }
 
+  //   chrome.runtime.sendMessage({ name: 'message' }, (response) => {
+  //     document.querySelector('body').innerHTML = response
+  //   })
 }, 1000)
 
+let isChecked = false
 
-/* const setSearchFocus = setTimeout(() => {
-    document.querySelector('input').focus()
-}, 0) */
+chrome.storage.local.get('isChecked', (result) => {
+  isChecked = result.isChecked
+  // alert(isChecked)
+  // Use the value of isChecked in your content script
+
+  if (isChecked) {
+    const checkChecked = setInterval(() => {
+      console.log('hi there')
+      if (
+        document.querySelector(
+          'ytd-browse[page-subtype~=channels] ytd-two-column-browse-results-renderer.ytd-browse'
+        )
+      )
+        document.querySelector(
+          'ytd-browse[page-subtype~=channels] ytd-two-column-browse-results-renderer.ytd-browse'
+        ).style.display = 'none'
+      clearInterval(checkChecked)
+    }, 100)
+  }
+})
+
+// alert("hi" + isChecked)
