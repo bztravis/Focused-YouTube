@@ -32,15 +32,24 @@ const getValues = () => {
   })
 }
 
+document.querySelector('body').addEventListener('click', () => {
+  // alert('clicked')
+  setCSS()
+})
+
 const setCSS = (changes) => {
   // alert('working')
   if (master) {
     // alert('trying to delete body')
-    document.querySelector('body').remove()
+    turnOnMaster()
   } else {
     // alert('turning off')
     console.log(changes)
-    if (changes && changes.focusedYouTubeMaster && changes.focusedYouTubeMaster.oldValue) {
+    if (
+      changes &&
+      changes.focusedYouTubeMaster &&
+      changes.focusedYouTubeMaster.oldValue
+    ) {
       document.location.reload()
     }
   }
@@ -73,3 +82,47 @@ chrome.storage.onChanged.addListener((changes, areaName) => {
     handleValues(changes)
   }
 })
+
+const turnOnMaster = () => {
+  // alert('yay')
+
+  // GENERAL
+  document.querySelectorAll('.ytp-endscreen-content').forEach((item) => {
+    item.style.cssText = 'display: none;'
+  })
+  document
+    .querySelectorAll('#secondary.style-scope.ytd-watch-flexy')
+    .forEach((item) => {
+      item.style.cssText = 'display: none;'
+    })
+  document
+    .querySelectorAll(
+      'ytd-watch-flexy[flexy][is-two-columns_][is-extra-wide-video_] #primary.ytd-watch-flexy, ytd-watch-flexy[flexy][is-two-columns_][is-four-three-to-sixteen-nine-video_] #primary.ytd-watch-flexy'
+    )
+    .forEach((item) => {
+      item.style.cssText = 'max-width: none !important;'
+    })
+  document.querySelectorAll('#related').forEach((item) => {
+    item.style.cssText = 'display: none;'
+  })
+  document.querySelectorAll('ytd-live-chat-frame#chat').forEach((item) => {
+    item.style.cssText = 'display: none;'
+  })
+
+  // NOTIFICATIONS
+  if (hideNotifications) {
+  }
+  // DISABLE NOTIFICATIONS
+  // else {
+
+  // }
+
+  // CHANNEL CONTENT
+  // if (hideChannelContent) {
+
+  // }
+  // DISABLE CHANNEL CONTENT
+  // else {
+
+  // }
+}

@@ -1,30 +1,3 @@
-let attempts = 0
-
-const forceTitleInterval = setInterval(() => {
-  // console.log('attempting')
-  const originalTitle = document.title
-
-  let firstUsefulLetter = 0
-
-  if (originalTitle[0] === '(') {
-    // alert('working')
-    for (; firstUsefulLetter < originalTitle.length; firstUsefulLetter++) {
-      if (originalTitle[firstUsefulLetter] === ')') {
-        firstUsefulLetter += 2
-        break
-      }
-    }
-  }
-
-  document.title = originalTitle.slice(firstUsefulLetter)
-  if (document.title[0] !== '(' || attempts > 30) {
-    // 30 sec of attempts
-    clearInterval(forceTitleInterval)
-  }
-
-  attempts++
-}, 1000)
-
 const showLogoAndSearch = setInterval(() => {
   // if pfp is displayed
   if (
@@ -41,3 +14,14 @@ const showLogoAndSearch = setInterval(() => {
     clearInterval(showLogoAndSearch)
   }
 }, 100)
+
+document.querySelectorAll('#search')[2].addEventListener('keydown', (e) => {
+  if (
+    e.key === 'Enter' &&
+    document.querySelectorAll('#search')[2].value !== ''
+  ) {
+    // alert('enter')
+    document.querySelector('#center').style.cssText = ''
+    document.querySelector('#logo-icon').style.cssText = ''
+  }
+})

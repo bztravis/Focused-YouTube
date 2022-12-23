@@ -1,32 +1,32 @@
 /* video page **************************************************************************************************************/
 
-.ytp-endscreen-content {
+/* .ytp-endscreen-content {
   display: none;
-}
+} */
 
 /* wide screens */
 
-#secondary.style-scope.ytd-watch-flexy {
+/* #secondary.style-scope.ytd-watch-flexy {
   display: none;
-}
+} */
 
-ytd-watch-flexy[flexy][is-two-columns_][is-extra-wide-video_]
+/* ytd-watch-flexy[flexy][is-two-columns_][is-extra-wide-video_]
   #primary.ytd-watch-flexy,
 ytd-watch-flexy[flexy][is-two-columns_][is-four-three-to-sixteen-nine-video_]
   #primary.ytd-watch-flexy {
   max-width: none !important;
-}
+} */
 
 /* narrow screens */
 
-#related {
+/* #related {
   display: none;
-}
+} */
 
 /* chat */
-ytd-live-chat-frame#chat {
+/* ytd-live-chat-frame#chat {
   display: none;
-}
+} */
 
 /* MISC UI ******************************************************************************************************************/
 
