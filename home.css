@@ -7,7 +7,9 @@
   width: 60vw;
   position: fixed;
   top: 40vh;
-  left: calc((100vw - 60vw - 77px) / 2);
+  left: calc((100vw - 60vw - 40px) / 2);
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
 }
 
 #logo-icon {
@@ -16,11 +18,15 @@
   position: fixed;
   top: calc(40vh - 180px);
   left: calc((100vw - (360px + 30px)) / 2);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
 }
+
+
 
 @media (min-width: 1200px) {
   #center {
     width: 720px;
-    left: calc((100vw - 720px - 77px) / 2);
+    left: calc((100vw - 720px - 40px) / 2);
   } 
 }
