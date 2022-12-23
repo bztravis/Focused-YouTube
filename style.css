@@ -31,13 +31,13 @@ ytd-watch-flexy[flexy][is-two-columns_][is-four-three-to-sixteen-nine-video_]
 /* MISC UI ******************************************************************************************************************/
 
 /* Create & notifications buttons top bar */
-#buttons
+/* #buttons
   > ytd-topbar-menu-button-renderer.style-scope.ytd-masthead.style-default {
   display: none;
-}
-#buttons.ytd-masthead > *.ytd-masthead:not(:last-child) {
+} */
+/* #buttons.ytd-masthead > *.ytd-masthead:not(:last-child) {
   display: none;
-}
+} */
 
 /* sidebar menus content */
 

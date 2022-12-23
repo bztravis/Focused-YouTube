@@ -65,7 +65,7 @@ const handleValues = (changes) => {
 }
 
 getValues()
-handleValues()
+setTimeout(() => {handleValues()}, 1)
 
 chrome.storage.onChanged.addListener((changes, areaName) => {
   // alert('change in storage')
@@ -111,18 +111,27 @@ const turnOnMaster = () => {
 
   // NOTIFICATIONS
   if (hideNotifications) {
+    document.querySelectorAll('#buttons > ytd-topbar-menu-button-renderer.style-scope.ytd-masthead.style-default').forEach((item) => {
+      item.style.cssText = 'display: none;'
+    })
+    document.querySelectorAll('#buttons.ytd-masthead > *.ytd-masthead:not(:last-child)').forEach((item) => {
+      item.style.cssText = 'display: none;'
+    })
   }
   // DISABLE NOTIFICATIONS
-  // else {
-
-  // }
+  else {
+    document.querySelectorAll('#buttons > ytd-topbar-menu-button-renderer.style-scope.ytd-masthead.style-default').forEach((item) => {
+      item.style.cssText = ''
+    })
+    document.querySelectorAll('#buttons.ytd-masthead > *.ytd-masthead:not(:last-child)').forEach((item) => {
+      item.style.cssText = ''
+    })
+  }
 
   // CHANNEL CONTENT
-  // if (hideChannelContent) {
-
-  // }
+  if (hideChannelContent) {
+  }
   // DISABLE CHANNEL CONTENT
-  // else {
-
-  // }
+  else {
+  }
 }
