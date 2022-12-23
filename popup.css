@@ -4,11 +4,12 @@
   --background-color: #fff;
   --text-color: #303030;
   --shaded-bg: #f0f0f0;
-  --inlet-shaded: #e0e0e0;
+  --inlet-shaded: #eaeaea;
 }
 
 * {
   box-sizing: border-box;
+  -webkit-margin-collapse: separate;
   -webkit-user-select: none;
   -webkit-user-drag: none;
   white-space: nowrap;
@@ -48,10 +49,15 @@ body {
   color: var(--text-color); */
 }
 
+h2:first-of-type {
+  padding-top: 0;
+}
+
 h2 {
   margin: 0;
   margin-left: 30px;
   padding: 0;
+  padding-top: 10px;
   font-family: 'Satoshi Bold';
   font-size: 13pt;
   color: var(--text-color);
