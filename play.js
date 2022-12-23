@@ -47,6 +47,15 @@ let isChecked = false
 //   }
 // })
 
+document.querySelector('#logo-icon').addEventListener('click', () => {
+  window.open('https://www.youtube.com', '_self')
+})
 
-
-document.querySelector('#logo-icon').addEventListener('click', () => {window.open("https://www.youtube.com","_self")})
+document.addEventListener('keydown', function (event) {
+  // Check if the enter key was pressed
+  if (event.key === 'Enter') {
+    setTimeout(() => {
+      
+    }, 500)
+  }
+})

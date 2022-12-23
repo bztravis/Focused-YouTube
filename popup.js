@@ -32,6 +32,7 @@ const setMasterSwitchSkin = () => {
     // alert(result.focusedYouTubeMaster)
     if (!result) {
       chrome.storage.local.set({ focusedYouTubeMaster: true })
+      document.querySelector('#masterStateTooltip').innerHTML = 'Enabled'
       // alert('null')
     } else {
       const masterSwitch = document.querySelector('#masterSwitch')
@@ -40,21 +41,23 @@ const setMasterSwitchSkin = () => {
         // alert('svgPause.svg')
         chrome.action.setIcon({
           path: {
-            '16': '/icons/icon16.png',
-            '48': '/icons/icon48.png',
-            '128': '/icons/icon128.png'
-          }
+            16: '/icons/icon16.png',
+            48: '/icons/icon48.png',
+            128: '/icons/icon128.png',
+          },
         })
+        document.querySelector('#masterStateTooltip').innerHTML = 'Enabled'
       } else {
         masterSwitch.src = 'svgPlay.svg'
         // alert('svgPlay.svg')
         chrome.action.setIcon({
           path: {
-            '16': '/icons/iconPlay16.png',
-            '48': '/icons/iconPlay48.png',
-            '128': '/icons/iconPlay128.png'
-          }
+            16: '/icons/iconPlay16.png',
+            48: '/icons/iconPlay48.png',
+            128: '/icons/iconPlay128.png',
+          },
         })
+        document.querySelector('#masterStateTooltip').innerHTML = 'Disabled'
       }
     }
   })
@@ -68,20 +71,22 @@ const setMasterSwitchSkinManual = (value) => {
     masterSwitch.src = 'svgPause.svg'
     chrome.action.setIcon({
       path: {
-        '16': '/icons/icon16.png',
-        '48': '/icons/icon48.png',
-        '128': '/icons/icon128.png'
-      }
+        16: '/icons/icon16.png',
+        48: '/icons/icon48.png',
+        128: '/icons/icon128.png',
+      },
     })
+    document.querySelector('#masterStateTooltip').innerHTML = 'Enabled'
   } else {
     masterSwitch.src = 'svgPlay.svg'
     chrome.action.setIcon({
       path: {
-        '16': '/icons/iconPlay16.png',
-        '48': '/icons/iconPlay48.png',
-        '128': '/icons/iconPlay128.png'
-      }
+        16: '/icons/iconPlay16.png',
+        48: '/icons/iconPlay48.png',
+        128: '/icons/iconPlay128.png',
+      },
     })
+    document.querySelector('#masterStateTooltip').innerHTML = 'Disabled'
   }
 }
 
@@ -95,6 +100,22 @@ document.querySelector('#masterSwitch').addEventListener('click', () => {
     setMasterSwitchSkinManual(newResult)
   })
 })
+
+document.querySelector('#masterSwitch').addEventListener('mouseover', () => {
+  document.querySelector('#masterStateTooltip').classList.add('active')
+})
+document.querySelector('#masterSwitch').addEventListener('mouseout', () => {
+  document.querySelector('#masterStateTooltip').classList.remove('active')
+})
+document
+  .querySelector('#masterSwitch')
+  .addEventListener('mousemove', (event) => {
+    const mouseX = event.clientX
+    const mouseY = event.clientY
+    const tooltip = document.querySelector('#masterStateTooltip')
+    tooltip.style.left = `${mouseX - 50}px`
+    tooltip.style.top = `${mouseY + 25}px`
+  })
 
 const setSwitches = (id) => {
   // alert(id)

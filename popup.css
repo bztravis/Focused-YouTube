@@ -4,7 +4,7 @@
   --background-color: #fff;
   --text-color: #303030;
   --shaded-bg: #f0f0f0;
-  --inlet-shaded: #eaeaea;
+  --inlet-shaded: #e6e6e6;
 }
 
 * {
@@ -84,6 +84,26 @@ h2 {
 #masterSwitch:active {
   transform: scale(0.95);
   filter: drop-shadow(0px 4px 6px rgba(255, 0, 0, 0.25));
+}
+
+#masterStateTooltip {
+  width: 100px;
+  padding: 5px;
+  position: fixed;
+  top: 100px;
+  text-align: center;
+  border: 2px solid rgba(255, 255, 255, 1);
+  border-radius: 5px;
+  font-family: 'Satoshi Regular';
+  font-size: 13pt;
+  color: red;
+  background: rgba(255, 255, 255, 0.9);
+  opacity: 0;
+  transition: opacity 0.1s ease-in-out;
+}
+
+#masterStateTooltip.active {
+  opacity: 1;
 }
 
 .box {
