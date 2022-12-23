@@ -38,9 +38,23 @@ const setMasterSwitchSkin = () => {
       if (result.focusedYouTubeMaster) {
         masterSwitch.src = 'svgPause.svg'
         // alert('svgPause.svg')
+        chrome.action.setIcon({
+          path: {
+            '16': '/icons/icon16.png',
+            '48': '/icons/icon48.png',
+            '128': '/icons/icon128.png'
+          }
+        })
       } else {
         masterSwitch.src = 'svgPlay.svg'
         // alert('svgPlay.svg')
+        chrome.action.setIcon({
+          path: {
+            '16': '/icons/iconPlay16.png',
+            '48': '/icons/iconPlay48.png',
+            '128': '/icons/iconPlay128.png'
+          }
+        })
       }
     }
   })
@@ -52,8 +66,22 @@ const setMasterSwitchSkinManual = (value) => {
   const masterSwitch = document.querySelector('#masterSwitch')
   if (value) {
     masterSwitch.src = 'svgPause.svg'
+    chrome.action.setIcon({
+      path: {
+        '16': '/icons/icon16.png',
+        '48': '/icons/icon48.png',
+        '128': '/icons/icon128.png'
+      }
+    })
   } else {
     masterSwitch.src = 'svgPlay.svg'
+    chrome.action.setIcon({
+      path: {
+        '16': '/icons/iconPlay16.png',
+        '48': '/icons/iconPlay48.png',
+        '128': '/icons/iconPlay128.png'
+      }
+    })
   }
 }
 
@@ -116,7 +144,9 @@ const setSwitches = (id) => {
           .classList.remove('active')
       }
     })
-  } else if (id === 0) {
+  }
+  // handle changes
+  else if (id === 0) {
     chrome.storage.local.get('focusedYouTubeHideNotifications', (result) => {
       if (result.focusedYouTubeHideNotifications) {
         document
@@ -129,7 +159,7 @@ const setSwitches = (id) => {
           [id].classList.add('active')
         chrome.storage.local.set({ focusedYouTubeHideNotifications: true })
       }
-    }) 
+    })
   } else if (id === 1) {
     chrome.storage.local.get('focusedYouTubeHideChannelContent', (result) => {
       if (result.focusedYouTubeHideChannelContent) {
@@ -159,9 +189,6 @@ const setSwitches = (id) => {
       }
     })
   }
-
-  // document.getElementsByClassName('toggleSwitch')[0].classList.remove('active')
-  // document.getElementsByClassName('toggleSwitch')[1].classList.add('active')
 }
 
 const options = document.getElementsByClassName('option')
