@@ -27,18 +27,31 @@ if (
   setDarkMode()
 }
 
+const setOptionsOpacity = (enabled) => {
+  const allOptionsContainer = document.querySelector('#allOptionsContainer')
+  if (enabled) {
+    allOptionsContainer.style.opacity = 1;
+    allOptionsContainer.style.pointerEvents = 'initial'
+  } else {
+    allOptionsContainer.style.opacity = 0.5
+    allOptionsContainer.style.pointerEvents = 'none'
+  }
+}
+
 const setMasterSwitchSkin = () => {
   chrome.storage.local.get('focusedYouTubeMaster', (result) => {
     // alert(result.focusedYouTubeMaster)
     if (!result) {
       chrome.storage.local.set({ focusedYouTubeMaster: true })
       document.querySelector('#masterStateTooltip').innerHTML = 'Enabled'
+      setOptionsOpacity(true)
       // alert('null')
     } else {
       const masterSwitch = document.querySelector('#masterSwitch')
       if (result.focusedYouTubeMaster) {
         masterSwitch.src = 'svgPause.svg'
         // alert('svgPause.svg')
+        setOptionsOpacity(true)
         chrome.action.setIcon({
           path: {
             16: '/icons/icon16.png',
@@ -50,6 +63,7 @@ const setMasterSwitchSkin = () => {
       } else {
         masterSwitch.src = 'svgPlay.svg'
         // alert('svgPlay.svg')
+        setOptionsOpacity(false)
         chrome.action.setIcon({
           path: {
             16: '/icons/iconPlay16.png',
@@ -69,6 +83,7 @@ const setMasterSwitchSkinManual = (value) => {
   const masterSwitch = document.querySelector('#masterSwitch')
   if (value) {
     masterSwitch.src = 'svgPause.svg'
+    setOptionsOpacity(true)
     chrome.action.setIcon({
       path: {
         16: '/icons/icon16.png',
@@ -79,6 +94,7 @@ const setMasterSwitchSkinManual = (value) => {
     document.querySelector('#masterStateTooltip').innerHTML = 'Enabled'
   } else {
     masterSwitch.src = 'svgPlay.svg'
+    setOptionsOpacity(false)
     chrome.action.setIcon({
       path: {
         16: '/icons/iconPlay16.png',

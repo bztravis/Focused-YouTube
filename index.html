@@ -1,46 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="/popup.css">
-  <script defer src="/popup.js" type="module"></script>
-</head>
-<body>
-  <img id="titleHeader" src="/Focused YouTube.svg">
-  <div id="masterSwitchContainer">
-    <img id="masterSwitch" src="svgPlay.svg">
-  </div>
-  <h2>Hide Options</h2> 
-  <div class="box">
-    <ul class="optionsList">
-      <li class="option">
-        <p class="optionText">Hide Notifications</p>
-        <div class="toggleSwitch">
-          <div class="toggleSwitchKnob"></div>
-        </div>
-      </li>
-      <li class="option">
-        <p class="optionText">Hide Channel Content</p>
-        <div class="toggleSwitch">
-          <div class="toggleSwitchKnob"></div>
-        </div>
-      </li>
-    </ul>
-  </div>
-  <h2>Other</h2>
-  <div class="box">
-    <ul class="optionsList">
-      <li class="option">
-        <p class="optionText">Enhaned Home</p>
-        <div class="toggleSwitch">
-          <div class="toggleSwitchKnob"></div>
-        </div>
-      </li>
-    </ul>
-  </div>
-  <div id="masterStateTooltip" class="">Enabled</div>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/popup.css" />
+    <script defer src="/popup.js" type="module"></script>
+  </head>
+  <body>
+    <img id="titleHeader" src="/Focused YouTube.svg" />
+    <div id="masterSwitchContainer">
+      <img id="masterSwitch" src="svgPlay.svg" />
+    </div>
+    <div id="allOptionsContainer">
+      <h2>Hide Options</h2>
+      <div class="box">
+        <ul class="optionsList">
+          <li class="option">
+            <p class="optionText">Hide Notifications</p>
+            <div class="toggleSwitch">
+              <div class="toggleSwitchKnob"></div>
+            </div>
+          </li>
+          <li class="option">
+            <p class="optionText">Hide Channel Content</p>
+            <div class="toggleSwitch">
+              <div class="toggleSwitchKnob"></div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <h2>Enhanced Home</h2>
+      <div class="box">
+        <ul class="optionsList">
+          <li class="option">
+            <p class="optionText">Enhaned Home</p>
+            <div class="toggleSwitch">
+              <div class="toggleSwitchKnob"></div>
+            </div>
+          </li>
+          <li class="option">
+            <p class="optionText">Hide Sidebar Menu</p>
+            <div class="toggleSwitch">
+              <div class="toggleSwitchKnob"></div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="masterStateTooltip" class="">Enabled</div>
+  </body>
 </html>
