@@ -31,7 +31,7 @@ const setMasterSwitchSkin = () => {
   chrome.storage.local.get('focusedYouTubeMaster', (result) => {
     // alert(result.focusedYouTubeMaster)
     if (!result) {
-      chrome.storage.local.set({ focusedYouTubeMaster: true })
+      chrome.storage.local.set({ 'focusedYouTubeMaster': true })
       // alert('null')
     } else {
       const masterSwitch = document.querySelector('#masterSwitch')
@@ -67,3 +67,8 @@ document.querySelector('#masterSwitch').addEventListener('click', () => {
     setMasterSwitchSkinManual(newResult)
   })
 })
+
+
+const toggleSwitch = (id) => {
+  document.getElementsByClassName('toggleSwitch')
+}
