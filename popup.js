@@ -181,6 +181,22 @@ const setSwitches = (id) => {
           .classList.remove('active')
       }
     })
+
+    chrome.storage.local.get('focusedYouTubeEHHideMenu', (result) => {
+      if (!result) {
+        chrome.storage.local.set({ focusedYouTubeEHHideMenu: true })
+        alert('null and set')
+      }
+      if (result.focusedYouTubeEHHideMenu) {
+        document
+          .getElementsByClassName('toggleSwitch')[3]
+          .classList.add('active')
+      } else {
+        document
+          .getElementsByClassName('toggleSwitch')[3]
+          .classList.remove('active')
+      }
+    })
   }
   // handle changes
   else if (id === 0) {
@@ -223,6 +239,20 @@ const setSwitches = (id) => {
           .getElementsByClassName('toggleSwitch')
           [id].classList.add('active')
         chrome.storage.local.set({ focusedYouTubeEnhancedHome: true })
+      }
+    })
+  } else if (id === 3) {
+    chrome.storage.local.get('focusedYouTubeEHHideMenu', (result) => {
+      if (result.focusedYouTubeEHHideMenu) {
+        document
+          .getElementsByClassName('toggleSwitch')
+          [id].classList.remove('active')
+        chrome.storage.local.set({ focusedYouTubeEHHideMenu: false })
+      } else {
+        document
+          .getElementsByClassName('toggleSwitch')
+          [id].classList.add('active')
+        chrome.storage.local.set({ focusedYouTubeEHHideMenu: true })
       }
     })
   }

@@ -100,6 +100,7 @@ h2 {
   font-size: 13pt;
   color: var(--tooltip-text);
   background: var(--tooltip-bg);
+  pointer-events: none;
   opacity: 0;
   transition: opacity 0.1s ease-in-out;
 }
