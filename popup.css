@@ -2,6 +2,8 @@
   --popup-width: 300px;
 
   --background-color: #fff;
+  --tooltip-bg: #ffffffcc;
+  --tooltip-text: red;
   --text-color: #303030;
   --shaded-bg: #f0f0f0;
   --inlet-shaded: #e6e6e6;
@@ -92,12 +94,12 @@ h2 {
   position: fixed;
   top: 100px;
   text-align: center;
-  border: 2px solid rgba(255, 255, 255, 1);
+  border: 2px solid var(--background-color);
   border-radius: 5px;
   font-family: 'Satoshi Regular';
   font-size: 13pt;
-  color: red;
-  background: rgba(255, 255, 255, 0.9);
+  color: var(--tooltip-text);
+  background: var(--tooltip-bg);
   opacity: 0;
   transition: opacity 0.1s ease-in-out;
 }
@@ -184,6 +186,8 @@ h2 {
 @media (prefers-color-scheme: dark) {
   :root {
     --background-color: #202020;
+    --tooltip-bg: #202020cc;
+    --tooltip-text: white;
     --text-color: #fff;
     --shaded-bg: #303030;
     --inlet-shaded: #262626;
