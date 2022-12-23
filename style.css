@@ -57,21 +57,19 @@ ytd-live-chat-frame#chat {
   display: none;
 }
 
-/* CHANNEL CONTENT ***********************************************************************************************************/
-
-/* channel home content */
-/* ytd-browse[page-subtype~='channels']
-  ytd-two-column-browse-results-renderer.ytd-browse {
-  display: none;
-} */
 
 /* HOME CONTENT **************************************************************************************************************/
 
-/* home thumbnail content */
-.style-scope.ytd-rich-grid-row {
+/* home thumbnail content */ /* channel video, shorts conent */
+/* .style-scope.ytd-rich-grid-row {
   opacity: 0;
   pointer-events: none;
-}
+} */
+
+/* #contents {
+  opacity: 0;
+  pointer-events: none;
+} */
 
 /* home shorts content */
 .style-scope.ytd-rich-shelf-renderer {

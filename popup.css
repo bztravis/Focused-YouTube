@@ -1,10 +1,141 @@
+:root {
+  --background-color: #fff;
+  --text-color: #303030;
+  --shaded-bg: #f0f0f0;
+  --inlet-shaded: #e0e0e0;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+  white-space: nowrap;
+}
+
+@font-face {
+  font-family: 'Satoshi Black';
+  src: url(/fonts/Satoshi-Black.otf);
+}
+
+@font-face {
+  font-family: 'Satoshi Bold';
+  src: url(/fonts/Satoshi-Bold.otf);
+}
+
+@font-face {
+  font-family: 'Satoshi Regular';
+  src: url(/fonts/Satoshi-Regular.otf);
+}
+
 body {
-  width: 400px;
-  height: 400px;
+  width: 300px;
+  /* height: 405px; */
+  margin: 0;
+  padding: 0px;
+  font-family: 'Satoshi Black';
+  border: 1px solid black;
+  background: var(--background-color);
+}
+
+#titleHeader {
+  width: calc(300px - 60px);
+  margin: 30px;
+  padding: 0;
+  /* font-family: 'Satoshi Black';
+  font-size: 21pt;
+  color: var(--text-color); */
+}
+
+h2 {
+  margin: 0;
+  margin-left: 30px;
+  padding: 0;
+  font-family: 'Satoshi Bold';
+  font-size: 13pt;
+  color: var(--text-color);
+}
+
+.box {
+  width: calc(100% - 2 * (15px));
+  margin: 15px;
+  margin-top: calc(15px * 1);
+  padding: 15px 15px 0px 15px;
+  border-radius: 15px;
+  border: none;
+  border-bottom: 2px solid var(--inlet-shaded);
+  background: var(--shaded-bg);
+}
+
+.optionsList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.option {
+  /* margin: 0px 0px 15px 0px; */
+  margin: 0;
+  margin-bottom: 15px;
+  padding: 0;
+}
+
+.optionText {
+  margin: 0;
+  padding: 0;
+  display: inline;
+  font-family: 'Satoshi Regular';
+  font-size: 11pt;
+  color: var(--text-color);
+}
+
+.toggleSwitch {
+  width: calc(21.5px * 2);
+  height: 21.5px;
+  border-radius: calc(21.5px * 0.5);
+  display: inline;
+  position: relative;
+  float: right;
+  margin-top: auto;
+  background: var(--inlet-shaded);
+  font-family: 'Satoshi Regular';
+  font-size: 11pt;
+}
+
+.toggleSwitch:hover {
+  cursor: pointer;
+}
+
+.toggleSwitch.active {
+  background: red;
+}
+
+.toggleSwitchKnob {
+  width: calc(21.5px * 2 / 3);
+  height: calc(21.5px * 2 / 3);
+  position: absolute;
+  top: calc(21.5px / 3 / 2);
+  left: calc(21.5px / 3 / 2);
+  border-radius: 100px;
+  background: white;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.toggleSwitch.active .toggleSwitchKnob {
+  width: calc(21.5px * 2 / 3);
+  height: calc(21.5px * 2 / 3);
+  position: absolute;
+  top: calc(21.5px / 3 / 2);
+  left: initial;
+  right: calc(21.5px / 3 / 2);
+  border-radius: 100px;
+  background: white;
 }
 
 @media (prefers-color-scheme: dark) {
-  body {
-    background: black;
+  :root {
+    --background-color: #202020;
+    --text-color: #fff;
+    --shaded-bg: #303030;
+    --inlet-shaded: #262626;
   }
 }

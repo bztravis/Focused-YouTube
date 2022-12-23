@@ -16,12 +16,10 @@
     },
     {
       "matches": ["https://www.youtube.com/"],
+      "css": ["/home.css"],
       "js": ["/forceTitle.js"]
     }
   ],
-  "background": {
-    "service_worker": "./background.js"
-  },
   "action": {
     "default_popup": "index.html"
   },

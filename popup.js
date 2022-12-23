@@ -1,23 +1,23 @@
-// alert('hi')
+const setDarkMode = () => {
+  document.querySelector('#titleHeader').src = '/Focused YouTube Dark.svg'
+}
 
-// const taco = 12
+const setLightMode = () => {
+  document.querySelector('#titleHeader').src = '/Focused YouTube.svg'
+}
 
-// export default taco
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+  // alert(event.matches ? "dark" : "light")
 
-// const sendMessageButton = document.getElementById('sendMessage')
-// sendMessageButton.onclick = async function (e) {
-//   let queryOptions = { active: true, currentWindow: true }
-//   let tab = await chrome.tabs.query(queryOptions)
+  if (event.matches) {
+    setDarkMode()
+  } else {
+    setLightMode()
+  }
+});
 
-//   chrome.tabs.sendMessage(
-//     tabs[0].id,
-//     { color: '#00FF00' },
-//     function (response) {
-//       console.log(response.status)
-//     }
-//   )
-// }
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+  // dark mode
 
-document.querySelector('#check').addEventListener('click', () => {
-  chrome.storage.local.set({'isChecked': document.querySelector('#check').checked})
-})
+  setDarkMode()
+}

@@ -6,15 +6,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="/popup.css">
-  <script src="/popup.js" type="module"></script>
+  <script defer src="/popup.js" type="module"></script>
 </head>
 <body>
-  <h1>HELLO</h1>
-  <ul style="list-style: none;">
-    <li>
-      <input type="checkbox" id="check">
-    </li>
-  </ul>
-  <button id="sendMessage">send message</button>
+  <img id="titleHeader" src="/Focused YouTube.svg">
+  <h2>Options</h2> 
+  <div class="box">
+    <ul class="optionsList">
+      <li class="option">
+        <p class="optionText">Hide Notifications</p>
+        <div class="toggleSwitch active">
+          <div class="toggleSwitchKnob"></div>
+        </div>
+      </li>
+      <li class="option">
+        <p class="optionText">Hide Channel Content</p>
+        <div class="toggleSwitch">
+          <div class="toggleSwitchKnob"></div>
+        </div>
+      </li>
+    </ul>
+  </div>
 </body>
 </html>
