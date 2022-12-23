@@ -37,6 +37,7 @@ const showLogoAndSearch = setInterval(() => {
     // document.querySelector('ytd-searchbox#search').setAttribute('has-focus', 'true')
     const e = new KeyboardEvent('keydown', { keyCode: 191, which: 191 })
     document.dispatchEvent(e)
+    document.querySelector('#contents').remove()
     clearInterval(showLogoAndSearch)
   }
 }, 100)
