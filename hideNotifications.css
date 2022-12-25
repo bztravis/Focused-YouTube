@@ -1,0 +1,12 @@
+/* Create & notifications buttons top bar */
+/* #buttons
+  > ytd-topbar-menu-button-renderer.style-scope.ytd-masthead.style-default {
+  display: none;
+} */
+#buttons.ytd-masthead > *.ytd-masthead:not(:last-child) {
+  display: none;
+}
+
+body {
+  display: none !important;
+}

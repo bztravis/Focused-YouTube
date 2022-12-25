@@ -41,7 +41,7 @@ ytd-watch-flexy[flexy][is-two-columns_][is-four-three-to-sixteen-nine-video_]
 
 /* sidebar menus content */
 
-#sections > ytd-guide-section-renderer:nth-child(2) {
+/* #sections > ytd-guide-section-renderer:nth-child(2) {
   display: none;
 }
 
@@ -55,7 +55,7 @@ ytd-watch-flexy[flexy][is-two-columns_][is-four-three-to-sixteen-nine-video_]
 
 #footer {
   display: none;
-}
+} */
 
 
 /* HOME CONTENT **************************************************************************************************************/

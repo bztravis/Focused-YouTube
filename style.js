@@ -32,11 +32,6 @@ const getValues = () => {
   })
 }
 
-document.querySelector('body').addEventListener('click', () => {
-  // alert('clicked')
-  setCSS()
-})
-
 const setCSS = (changes) => {
   // alert('working')
   if (master) {
@@ -61,11 +56,11 @@ const handleValues = (changes) => {
     //   `${master} ${hideNotifications} ${hideChannelContent} ${enhancedHome} ${eHHideMenu}`
     // )
     setCSS(changes)
-  }, 1)
+  }, 100)
 }
 
 getValues()
-setTimeout(() => {handleValues()}, 1)
+handleValues()
 
 chrome.storage.onChanged.addListener((changes, areaName) => {
   // alert('change in storage')
@@ -86,7 +81,7 @@ chrome.storage.onChanged.addListener((changes, areaName) => {
 const turnOnMaster = () => {
   // alert('yay')
 
-  // GENERAL
+  // GENERAL *******************************************************************
   document.querySelectorAll('.ytp-endscreen-content').forEach((item) => {
     item.style.cssText = 'display: none;'
   })
@@ -108,30 +103,52 @@ const turnOnMaster = () => {
   document.querySelectorAll('ytd-live-chat-frame#chat').forEach((item) => {
     item.style.cssText = 'display: none;'
   })
+  document
+    .querySelectorAll('#sections > ytd-guide-section-renderer:nth-child(2)')
+    .forEach((item) => {
+      item.style.cssText = 'display: none;'
+    })
+  document
+    .querySelectorAll('#sections > ytd-guide-section-renderer:nth-child(3)')
+    .forEach((item) => {
+      item.style.cssText = 'display: none;'
+    })
+  document
+    .querySelectorAll('#sections > ytd-guide-section-renderer:nth-child(4)')
+    .forEach((item) => {
+      item.style.cssText = 'display: none;'
+    })
+  document.querySelectorAll('#footer').forEach((item) => {
+    item.style.cssText = 'display: none;'
+  })
 
-  // NOTIFICATIONS
+  // NOTIFICATIONS *************************************************************
   if (hideNotifications) {
-    document.querySelectorAll('#buttons > ytd-topbar-menu-button-renderer.style-scope.ytd-masthead.style-default').forEach((item) => {
-      item.style.cssText = 'display: none;'
-    })
-    document.querySelectorAll('#buttons.ytd-masthead > *.ytd-masthead:not(:last-child)').forEach((item) => {
-      item.style.cssText = 'display: none;'
-    })
+    let style = document.createElement('style')
+    style.id = 'hideNotifications'
+    style.innerHTML = `#buttons > ytd-notification-topbar-button-renderer {display: none !important;}`
+    document.head.appendChild(style)
+    console.log('appending')
   }
-  // DISABLE NOTIFICATIONS
+  // DISABLE NOTIFICATIONS *****************************************************
   else {
-    document.querySelectorAll('#buttons > ytd-topbar-menu-button-renderer.style-scope.ytd-masthead.style-default').forEach((item) => {
-      item.style.cssText = ''
-    })
-    document.querySelectorAll('#buttons.ytd-masthead > *.ytd-masthead:not(:last-child)').forEach((item) => {
-      item.style.cssText = ''
-    })
+    document.querySelectorAll('#hideNotifications').forEach((item) => {item.innerHTML = ''})
   }
 
-  // CHANNEL CONTENT
+  // CHANNEL CONTENT ***********************************************************
   if (hideChannelContent) {
   }
-  // DISABLE CHANNEL CONTENT
+  // DISABLE CHANNEL CONTENT ***************************************************
   else {
   }
 }
+
+document.querySelector('body').addEventListener('click', () => {
+  // alert('clicked')
+  setCSS()
+})
+
+window.addEventListener('load', (event) => {
+  // alert('loaded')
+  setCSS()
+})
