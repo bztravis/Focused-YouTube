@@ -78,7 +78,6 @@ const setCssHome = () => {
     
     `
     document.head.appendChild(style)
-    // console.log('appending')
   }
   // DISABLE EH *****************************************************
   else if (!enhancedHome || !masterHome) {
@@ -180,7 +179,30 @@ document.querySelectorAll('#search')[2].addEventListener('keydown', (e) => {
     document.querySelectorAll('#search')[2].value !== ''
   ) {
     // alert('enter')
-    document.querySelector('#center').style.cssText = ''
-    document.querySelector('#logo-icon').style.cssText = ''
+    resetForSearch()
   }
+})
+
+const resetForSearch = () => {
+
+  // ehHideMenu easy
+  document.querySelectorAll('#eHHideMenu').forEach((instance) => {
+    instance.innerHTML = ''
+  })
+
+  // remove enhancedHome easy
+  document.querySelectorAll('#enhancedHome').forEach((instance) => {
+    instance.innerHTML = ''
+  })
+
+  // remove page manager styling
+  document.querySelectorAll('#homeGeneral').forEach((instance) => {
+    instance.innerHTML = ''
+  })
+
+  
+}
+
+document.querySelector('#search-icon-legacy').addEventListener('click', () => {
+  resetForSearch()
 })
