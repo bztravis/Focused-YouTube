@@ -157,7 +157,10 @@ document.querySelectorAll('#search')[2].addEventListener('keydown', (e) => {
 //   pointer-events: none;
 // }
 
-let general = document.createElement('style')
-general.id = 'general'
-general.innerHTML = `#buttons > ytd-notification-topbar-button-renderer {display: none !important;}`
-document.head.appendChild(general)
+
+
+// idk tbh
+// let general = document.createElement('style')
+// general.id = 'general'
+// general.innerHTML = `#buttons > ytd-notification-topbar-button-renderer {display: none !important;}`
+// document.head.appendChild(general)
