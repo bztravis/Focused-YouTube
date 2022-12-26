@@ -28,7 +28,12 @@ const setCssHome = () => {
     .style-scope.ytd-feed-filter-chip-bar-renderer {
       opacity: 0;
       pointer-events: none;
-    }`
+    }
+    /* home thumbnails */
+    #page-manager {
+      display: none !important;
+    }
+    `
     document.head.appendChild(homeGeneral)
   } else {
     document.querySelectorAll('#homeGeneral').forEach((instance) => {
@@ -42,11 +47,36 @@ const setCssHome = () => {
   if (enhancedHome) {
     let style = document.createElement('style')
     style.id = 'enhancedHome'
-    style.innerHTML = `    
-    #contents {
+    style.innerHTML = `
+    #center {
+      display: flex !important;
+      width: 60vw;
+      position: fixed;
+      top: 40vh;
+      left: calc((100vw - 60vw - 40px) / 2);
       opacity: 0;
-      pointer-events: none;
-    }`
+    }
+    
+    #logo-icon {
+      display: flex !important;
+      width: 360px;
+      height: 120px;
+      position: fixed;
+      top: calc(40vh - 180px);
+      left: calc((100vw - (360px + 30px)) / 2);
+      opacity: 0;
+    }
+    
+    
+    
+    @media (min-width: 1200px) {
+      #center {
+        width: 720px;
+        left: calc((100vw - 720px - 40px) / 2);
+      } 
+    }
+    
+    `
     document.head.appendChild(style)
     // console.log('appending')
   }
@@ -122,9 +152,10 @@ document.querySelector('body').addEventListener('click', () => {
   setCssHome()
 })
 
-window.addEventListener('load', (event) => {
-  // alert('loaded')
+window.addEventListener('load', () => {
   setCssHome()
+  // document.body.style.display = 'block'
+  document.body.style.opacity = '1'
 })
 
 const showLogoAndSearch = setInterval(() => {
@@ -139,7 +170,6 @@ const showLogoAndSearch = setInterval(() => {
     // document.querySelector('ytd-searchbox#search').setAttribute('has-focus', 'true')
     const e = new KeyboardEvent('keydown', { keyCode: 191, which: 191 })
     document.dispatchEvent(e)
-    document.querySelector('#contents').remove()
     clearInterval(showLogoAndSearch)
   }
 }, 100)

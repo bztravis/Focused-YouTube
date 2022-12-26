@@ -150,7 +150,7 @@ document.querySelector('body').addEventListener('click', () => {
   setCSS()
 })
 
-window.addEventListener('load', (event) => {
+window.addEventListener('load', () => {
   // alert('loaded')
   setCSS()
 })
