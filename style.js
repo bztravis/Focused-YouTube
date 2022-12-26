@@ -3,15 +3,11 @@
 let master = true
 let hideNotifications = true
 let hideChannelContent = true
-let enhancedHome = true
-let eHHideMenu = false
 
 relevantValues = [
   'focusedYouTubeMaster',
   'focusedYouTubeHideNotifications',
   'focusedYouTubeHideChannelContent',
-  'focusedYouTubeEnhancedHome',
-  'focusedYouTubeEHHideMenu',
 ]
 
 const getValues = () => {

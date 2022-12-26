@@ -1,3 +1,121 @@
+let masterHome = true
+let enhancedHome = true
+let eHHideMenu = false
+
+relevantValues = [
+  'focusedYouTubeEnhancedHome',
+  'focusedYouTubeEHHideMenu',
+]
+
+const getValuesHome = () => {
+  chrome.storage.local.get('focusedYouTubeMaster', (result) => {
+    masterHome = result.focusedYouTubeMaster
+  })
+  chrome.storage.local.get('focusedYouTubeEnhancedHome', (result) => {
+    enhancedHome = result.focusedYouTubeEnhancedHome
+  })
+  chrome.storage.local.get('focusedYouTubeEHHideMenu', (result) => {
+    eHHideMenu = result.focusedYouTubeEHHideMenu
+  })
+}
+
+const setCssHome = () => {
+  if (masterHome) {
+    let homeGeneral = document.createElement('style')
+    homeGeneral.id = 'homeGeneral'
+    homeGeneral.innerHTML = ``
+    document.head.appendChild(homeGeneral)
+  } else {
+    document.querySelectorAll('#homeGeneral').forEach((instance) => {
+      instance.innerHTML = ''
+    })
+    enhancedHome = false
+    eHHideMenu = false
+  }
+
+  // EH *************************************************************
+  if (enhancedHome) {
+    let style = document.createElement('style')
+    style.id = 'enhancedHome'
+    style.innerHTML = ``
+    document.head.appendChild(style)
+    // console.log('appending')
+  }
+  // DISABLE EH *****************************************************
+  else {
+    document.querySelectorAll('#enhancedHome').forEach((instance) => {
+      instance.innerHTML = ''
+    })
+  }
+
+  // HIDE SIDEBAR MENU ***********************************************************
+  if (eHHideMenu) {
+    let style = document.createElement('style')
+    style.id = 'eHHideMenu'
+    style.innerHTML = `/* hide home sidebar menu */
+
+    #guide-button {
+      opacity: 0;
+      pointer-events: none;
+    }
+    
+    #content > ytd-mini-guide-renderer {
+      opacity: 0;
+      pointer-events: none;
+    }
+    
+    #guide-inner-content {
+      opacity: 0;
+      pointer-events: none;
+    }`
+    document.head.appendChild(style)
+  }
+  // DISABLE HIDE SIDEBAR MENU ***************************************************
+  if (!eHHideMenu || !enhancedHome) {
+    document.querySelectorAll('#eHHideMenu').forEach((instance) => {
+      instance.innerHTML = ''
+    })
+  }
+}
+
+const handleValuesHome = (changes) => {
+  setTimeout(() => {
+    // alert(
+    //   `${master} ${hideNotifications} ${hideChannelContent} ${enhancedHome} ${eHHideMenu}`
+    // )
+    setCssHome()
+  }, 100)
+}
+
+getValuesHome()
+handleValuesHome()
+
+chrome.storage.onChanged.addListener((changes, areaName) => {
+  // alert('change in storage')
+  // console.log(changes)
+  getValuesHome()
+  let needToUpdate = false
+  relevantValues.forEach((item) => {
+    if (Object.keys(changes).includes(item)) {
+      needToUpdate = true
+    }
+    // console.log(Object.keys(changes), item, needToUpdate)
+  })
+  if (needToUpdate) {
+    handleValuesHome(changes)
+  }
+})
+
+document.querySelector('body').addEventListener('click', () => {
+  // alert('clicked')
+  setCssHome()
+})
+
+window.addEventListener('load', (event) => {
+  // alert('loaded')
+  setCssHome()
+})
+
 const showLogoAndSearch = setInterval(() => {
   // if pfp is displayed
   if (
@@ -26,8 +144,6 @@ document.querySelectorAll('#search')[2].addEventListener('keydown', (e) => {
   }
 })
 
-
-
 // get rid of contents and categories
 
 // /* home categories */
@@ -40,3 +156,8 @@ document.querySelectorAll('#search')[2].addEventListener('keydown', (e) => {
 //   opacity: 0;
 //   pointer-events: none;
 // }
+
+let general = document.createElement('style')
+general.id = 'general'
+general.innerHTML = `#buttons > ytd-notification-topbar-button-renderer {display: none !important;}`
+document.head.appendChild(general)

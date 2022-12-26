@@ -24,9 +24,9 @@ ytd-watch-flexy[flexy][is-two-columns_][is-four-three-to-sixteen-nine-video_]
 }
 
 /* chat */
-ytd-live-chat-frame#chat {
+/* ytd-live-chat-frame#chat {
   display: none;
-}
+} */
 
 /* MISC UI ******************************************************************************************************************/
 
