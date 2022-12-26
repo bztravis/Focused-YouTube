@@ -12,14 +12,14 @@ const relevantValues = [
 
 const getValues = () => {
   chrome.storage.local.get('focusedYouTubeMaster', (result) => {
-    if (!result) {
+    if (!result.focusedYouTubeMaster) {
       chrome.storage.local.set({ focusedYouTubeMaster: master })
       getValues()
     }
     master = result.focusedYouTubeMaster
   })
   chrome.storage.local.get('focusedYouTubeHideNotifications', (result) => {
-    if (!result) {
+    if (!result.focusedYouTubeHideNotifications) {
       chrome.storage.local.set({
         focusedYouTubeHideNotifications: hideNotifications,
       })
@@ -28,7 +28,7 @@ const getValues = () => {
     hideNotifications = result.focusedYouTubeHideNotifications
   })
   chrome.storage.local.get('focusedYouTubeHideChannelContent', (result) => {
-    if (!result) {
+    if (!result.focusedYouTubeHideChannelContent) {
       chrome.storage.local.set({ focusedYouTubeHideChannelContent: hideChannelContent })
       getValues()
     }
