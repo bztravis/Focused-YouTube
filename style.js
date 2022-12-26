@@ -4,7 +4,7 @@ let master = true
 let hideNotifications = true
 let hideChannelContent = true
 
-relevantValues = [
+const relevantValues = [
   'focusedYouTubeMaster',
   'focusedYouTubeHideNotifications',
   'focusedYouTubeHideChannelContent',
@@ -19,12 +19,6 @@ const getValues = () => {
   })
   chrome.storage.local.get('focusedYouTubeHideChannelContent', (result) => {
     hideChannelContent = result.focusedYouTubeHideChannelContent
-  })
-  chrome.storage.local.get('focusedYouTubeEnhancedHome', (result) => {
-    enhancedHome = result.focusedYouTubeEnhancedHome
-  })
-  chrome.storage.local.get('focusedYouTubeEHHideMenu', (result) => {
-    eHHideMenu = result.focusedYouTubeEHHideMenu
   })
 }
 
@@ -84,8 +78,6 @@ const setCSS = () => {
 
     hideNotifications = false
     hideChannelContent = false
-    enhancedHome = false
-    eHHideMenu = false
   }
 
   // HIDE NOTIFICATIONS *************************************************************

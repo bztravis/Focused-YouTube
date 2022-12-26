@@ -2,7 +2,8 @@ let masterHome = true
 let enhancedHome = true
 let eHHideMenu = false
 
-relevantValues = [
+const relevantValuesHome = [
+  'focusedYouTubeMaster',
   'focusedYouTubeEnhancedHome',
   'focusedYouTubeEHHideMenu',
 ]
@@ -23,7 +24,11 @@ const setCssHome = () => {
   if (masterHome) {
     let homeGeneral = document.createElement('style')
     homeGeneral.id = 'homeGeneral'
-    homeGeneral.innerHTML = ``
+    homeGeneral.innerHTML = `/* home categories */
+    .style-scope.ytd-feed-filter-chip-bar-renderer {
+      opacity: 0;
+      pointer-events: none;
+    }`
     document.head.appendChild(homeGeneral)
   } else {
     document.querySelectorAll('#homeGeneral').forEach((instance) => {
@@ -37,12 +42,17 @@ const setCssHome = () => {
   if (enhancedHome) {
     let style = document.createElement('style')
     style.id = 'enhancedHome'
-    style.innerHTML = ``
+    style.innerHTML = `    
+    #contents {
+      opacity: 0;
+      pointer-events: none;
+    }`
     document.head.appendChild(style)
     // console.log('appending')
   }
   // DISABLE EH *****************************************************
-  else {
+  else if (!enhancedHome || !masterHome) {
+    console.log('disabling EH')
     document.querySelectorAll('#enhancedHome').forEach((instance) => {
       instance.innerHTML = ''
     })
@@ -71,7 +81,8 @@ const setCssHome = () => {
     document.head.appendChild(style)
   }
   // DISABLE HIDE SIDEBAR MENU ***************************************************
-  if (!eHHideMenu || !enhancedHome) {
+  if (!eHHideMenu || !enhancedHome || !masterHome) {
+    console.log('disabling EHHSM')
     document.querySelectorAll('#eHHideMenu').forEach((instance) => {
       instance.innerHTML = ''
     })
@@ -95,7 +106,7 @@ chrome.storage.onChanged.addListener((changes, areaName) => {
   // console.log(changes)
   getValuesHome()
   let needToUpdate = false
-  relevantValues.forEach((item) => {
+  relevantValuesHome.forEach((item) => {
     if (Object.keys(changes).includes(item)) {
       needToUpdate = true
     }
@@ -143,24 +154,3 @@ document.querySelectorAll('#search')[2].addEventListener('keydown', (e) => {
     document.querySelector('#logo-icon').style.cssText = ''
   }
 })
-
-// get rid of contents and categories
-
-// /* home categories */
-// .style-scope.ytd-feed-filter-chip-bar-renderer {
-//   opacity: 0;
-//   pointer-events: none;
-// }
-
-// #contents {
-//   opacity: 0;
-//   pointer-events: none;
-// }
-
-
-
-// idk tbh
-// let general = document.createElement('style')
-// general.id = 'general'
-// general.innerHTML = `#buttons > ytd-notification-topbar-button-renderer {display: none !important;}`
-// document.head.appendChild(general)
