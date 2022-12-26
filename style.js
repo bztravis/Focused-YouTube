@@ -32,21 +32,86 @@ const getValues = () => {
   })
 }
 
-const setCSS = (changes) => {
-  // alert('working')
+const setCSS = () => {
   if (master) {
-    // alert('trying to delete body')
-    turnOnMaster()
+    let general = document.createElement('style')
+    general.id = 'general'
+    general.innerHTML = `.ytp-endscreen-content {
+    display: none;
+  }
+
+  /* wide screens */
+
+  #secondary.style-scope.ytd-watch-flexy {
+    display: none;
+  }
+
+  ytd-watch-flexy[flexy][is-two-columns_][is-extra-wide-video_]
+    #primary.ytd-watch-flexy,
+  ytd-watch-flexy[flexy][is-two-columns_][is-four-three-to-sixteen-nine-video_]
+    #primary.ytd-watch-flexy {
+    max-width: none !important;
+  }
+
+  /* narrow screens */
+
+  #related {
+    display: none;
+  }
+
+  /* chat */
+  ytd-live-chat-frame#chat {
+    display: none;
+  }
+
+  #sections > ytd-guide-section-renderer:nth-child(2) {
+    display: none;
+  }
+
+  #sections > ytd-guide-section-renderer:nth-child(3) {
+    display: none;
+  }
+
+  #sections > ytd-guide-section-renderer:nth-child(4) {
+    display: none;
+  }
+
+  #footer {
+    display: none;
+  }
+  `
+    document.head.appendChild(general)
   } else {
-    // alert('turning off')
-    console.log(changes)
-    if (
-      changes &&
-      changes.focusedYouTubeMaster &&
-      changes.focusedYouTubeMaster.oldValue
-    ) {
-      document.location.reload()
-    }
+    document.querySelectorAll('#general').forEach((instance) => {
+      instance.innerHTML = ''
+    })
+
+    hideNotifications = false
+    hideChannelContent = false
+    enhancedHome = false
+    eHHideMenu = false
+  }
+
+  // NOTIFICATIONS *************************************************************
+  if (hideNotifications) {
+    let style = document.createElement('style')
+    style.id = 'hideNotifications'
+    style.innerHTML = `#buttons > ytd-notification-topbar-button-renderer {display: none !important;}`
+    document.head.appendChild(style)
+    console.log('appending')
+  }
+  // DISABLE NOTIFICATIONS *****************************************************
+  else {
+    document.querySelectorAll('#hideNotifications').forEach((instance) => {
+      instance.innerHTML = ''
+    })
+  }
+
+  // CHANNEL CONTENT ***********************************************************
+  if (hideChannelContent) {
+  }
+  // DISABLE CHANNEL CONTENT ***************************************************
+  else {
   }
 }
 
@@ -55,7 +120,7 @@ const handleValues = (changes) => {
     // alert(
     //   `${master} ${hideNotifications} ${hideChannelContent} ${enhancedHome} ${eHHideMenu}`
     // )
-    setCSS(changes)
+    setCSS()
   }, 100)
 }
 
@@ -71,77 +136,12 @@ chrome.storage.onChanged.addListener((changes, areaName) => {
     if (Object.keys(changes).includes(item)) {
       needToUpdate = true
     }
-    console.log(Object.keys(changes), item, needToUpdate)
+    // console.log(Object.keys(changes), item, needToUpdate)
   })
   if (needToUpdate) {
     handleValues(changes)
   }
 })
-
-const turnOnMaster = () => {
-  // alert('yay')
-
-  // GENERAL *******************************************************************
-  document.querySelectorAll('.ytp-endscreen-content').forEach((item) => {
-    item.style.cssText = 'display: none;'
-  })
-  document
-    .querySelectorAll('#secondary.style-scope.ytd-watch-flexy')
-    .forEach((item) => {
-      item.style.cssText = 'display: none;'
-    })
-  document
-    .querySelectorAll(
-      'ytd-watch-flexy[flexy][is-two-columns_][is-extra-wide-video_] #primary.ytd-watch-flexy, ytd-watch-flexy[flexy][is-two-columns_][is-four-three-to-sixteen-nine-video_] #primary.ytd-watch-flexy'
-    )
-    .forEach((item) => {
-      item.style.cssText = 'max-width: none !important;'
-    })
-  document.querySelectorAll('#related').forEach((item) => {
-    item.style.cssText = 'display: none;'
-  })
-  document.querySelectorAll('ytd-live-chat-frame#chat').forEach((item) => {
-    item.style.cssText = 'display: none;'
-  })
-  document
-    .querySelectorAll('#sections > ytd-guide-section-renderer:nth-child(2)')
-    .forEach((item) => {
-      item.style.cssText = 'display: none;'
-    })
-  document
-    .querySelectorAll('#sections > ytd-guide-section-renderer:nth-child(3)')
-    .forEach((item) => {
-      item.style.cssText = 'display: none;'
-    })
-  document
-    .querySelectorAll('#sections > ytd-guide-section-renderer:nth-child(4)')
-    .forEach((item) => {
-      item.style.cssText = 'display: none;'
-    })
-  document.querySelectorAll('#footer').forEach((item) => {
-    item.style.cssText = 'display: none;'
-  })
-
-  // NOTIFICATIONS *************************************************************
-  if (hideNotifications) {
-    let style = document.createElement('style')
-    style.id = 'hideNotifications'
-    style.innerHTML = `#buttons > ytd-notification-topbar-button-renderer {display: none !important;}`
-    document.head.appendChild(style)
-    console.log('appending')
-  }
-  // DISABLE NOTIFICATIONS *****************************************************
-  else {
-    document.querySelectorAll('#hideNotifications').forEach((item) => {item.innerHTML = ''})
-  }
-
-  // CHANNEL CONTENT ***********************************************************
-  if (hideChannelContent) {
-  }
-  // DISABLE CHANNEL CONTENT ***************************************************
-  else {
-  }
-}
 
 document.querySelector('body').addEventListener('click', () => {
   // alert('clicked')
