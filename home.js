@@ -146,11 +146,6 @@ chrome.storage.onChanged.addListener((changes, areaName) => {
   }
 })
 
-document.querySelector('body').addEventListener('click', () => {
-  // alert('clicked')
-  setCssHome()
-})
-
 window.addEventListener('load', () => {
   setCssHome()
   // document.body.style.display = 'block'
