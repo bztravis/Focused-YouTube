@@ -25,3 +25,18 @@ document.querySelectorAll('#search')[2].addEventListener('keydown', (e) => {
     document.querySelector('#logo-icon').style.cssText = ''
   }
 })
+
+
+
+// get rid of contents and categories
+
+// /* home categories */
+// .style-scope.ytd-feed-filter-chip-bar-renderer {
+//   opacity: 0;
+//   pointer-events: none;
+// }
+
+// #contents {
+//   opacity: 0;
+//   pointer-events: none;
+// }

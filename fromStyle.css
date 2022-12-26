@@ -1,0 +1,46 @@
+#contents {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* home shorts content */
+.style-scope.ytd-rich-shelf-renderer {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* try YouTube TV dismissable */
+.style-scope.ytd-compact-promoted-item-renderer {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ghost cards */
+ytd-continuation-item-renderer {
+  opacity: 0;
+  pointer-events: none;
+}
+
+
+
+/* home shelf borders */
+ytd-rich-shelf-renderer {
+  border-width: 0 !important;
+}
+
+/* YouTube featured */
+#big-yoodle {
+  opacity: 0;
+  pointer-events: none;
+}
+ytd-brand-video-singleton-renderer {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* video feedback cards */
+#content > ytd-inline-survey-renderer {
+  opacity: 0;
+}
+
+

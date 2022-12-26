@@ -92,13 +92,13 @@ const setCSS = () => {
     eHHideMenu = false
   }
 
-  // NOTIFICATIONS *************************************************************
+  // HIDE NOTIFICATIONS *************************************************************
   if (hideNotifications) {
     let style = document.createElement('style')
     style.id = 'hideNotifications'
     style.innerHTML = `#buttons > ytd-notification-topbar-button-renderer {display: none !important;}`
     document.head.appendChild(style)
-    console.log('appending')
+    // console.log('appending')
   }
   // DISABLE NOTIFICATIONS *****************************************************
   else {
@@ -107,11 +107,25 @@ const setCSS = () => {
     })
   }
 
-  // CHANNEL CONTENT ***********************************************************
+  // HIDE CHANNEL CONTENT ***********************************************************
   if (hideChannelContent) {
+    let style = document.createElement('style')
+    style.id = 'hideChannelContent'
+    style.innerHTML = `
+    #page-manager > ytd-browse > ytd-two-column-browse-results-renderer {opacity: 0; pointer-events: none;}
+    /*  categories */
+.style-scope.ytd-feed-filter-chip-bar-renderer {
+  opacity: 0;
+  pointer-events: none;
+}
+    `
+    document.head.appendChild(style)
   }
   // DISABLE CHANNEL CONTENT ***************************************************
   else {
+    document.querySelectorAll('#hideChannelContent').forEach((instance) => {
+      instance.innerHTML = ''
+    })
   }
 }
 
