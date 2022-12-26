@@ -21,6 +21,9 @@ const getValuesHome = () => {
 }
 
 const setCssHome = () => {
+
+  if (document.title !== 'YouTube') return
+
   if (masterHome) {
     let homeGeneral = document.createElement('style')
     homeGeneral.id = 'homeGeneral'
