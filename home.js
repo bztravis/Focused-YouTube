@@ -1,6 +1,6 @@
 let masterHome = true
 let enhancedHome = true
-let eHHideMenu = false
+let eHHideMenu = true
 
 const relevantValuesHome = [
   'focusedYouTubeMaster',
@@ -10,18 +10,29 @@ const relevantValuesHome = [
 
 const getValuesHome = () => {
   chrome.storage.local.get('focusedYouTubeMaster', (result) => {
+    if (!result) {
+      chrome.storage.local.set({ focusedYouTubeMaster: masterHome })
+      getValues()
+    }
     masterHome = result.focusedYouTubeMaster
   })
   chrome.storage.local.get('focusedYouTubeEnhancedHome', (result) => {
+    if (!result) {
+      chrome.storage.local.set({ focusedYouTubeHideChannelContent: enhancedHome })
+      getValues()
+    }
     enhancedHome = result.focusedYouTubeEnhancedHome
   })
   chrome.storage.local.get('focusedYouTubeEHHideMenu', (result) => {
+    if (!result) {
+      chrome.storage.local.set({ focusedYouTubeEnhancedHome: eHHideMenu })
+      getValues()
+    }
     eHHideMenu = result.focusedYouTubeEHHideMenu
   })
 }
 
 const setCssHome = () => {
-
   if (document.title !== 'YouTube') return
 
   if (masterHome) {
@@ -84,7 +95,7 @@ const setCssHome = () => {
   }
   // DISABLE EH *****************************************************
   else if (!enhancedHome || !masterHome) {
-    console.log('disabling EH')
+    // console.log('disabling EH')
     document.querySelectorAll('#enhancedHome').forEach((instance) => {
       instance.innerHTML = ''
     })
@@ -114,7 +125,7 @@ const setCssHome = () => {
   }
   // DISABLE HIDE SIDEBAR MENU ***************************************************
   if (!eHHideMenu || !enhancedHome || !masterHome) {
-    console.log('disabling EHHSM')
+    // console.log('disabling EHHSM')
     document.querySelectorAll('#eHHideMenu').forEach((instance) => {
       instance.innerHTML = ''
     })
@@ -182,7 +193,6 @@ document.querySelectorAll('#search')[2].addEventListener('keydown', (e) => {
 })
 
 const resetForSearch = () => {
-
   // ehHideMenu easy
   document.querySelectorAll('#eHHideMenu').forEach((instance) => {
     instance.innerHTML = ''
@@ -197,10 +207,11 @@ const resetForSearch = () => {
   document.querySelectorAll('#homeGeneral').forEach((instance) => {
     instance.innerHTML = ''
   })
-
-  
 }
 
-document.querySelector('#search-icon-legacy').addEventListener('click', () => {
-  resetForSearch()
-})
+yTLogo = document.querySelector('#search-icon-legacy')
+if (yTLogo) {
+  yTLogo.addEventListener('click', () => {
+    resetForSearch()
+  })
+}
