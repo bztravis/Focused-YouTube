@@ -275,6 +275,7 @@ for (let i = 0; i < options.length; i++) {
   })
 }
 
+setMasterSwitchSkin()
 setSwitches(-1)
 
 // add switch transitions after states load

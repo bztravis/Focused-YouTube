@@ -13,19 +13,22 @@ const getValuesHome = () => {
     if (!result) {
       chrome.storage.local.set({ focusedYouTubeMaster: masterHome })
     }
-    masterHome = result.focusedYouTubeMaster
+    else
+      masterHome = result.focusedYouTubeMaster
   })
   chrome.storage.local.get('focusedYouTubeEnhancedHome', (result) => {
     if (!result) {
       chrome.storage.local.set({ focusedYouTubeHideChannelContent: enhancedHome })
     }
-    enhancedHome = result.focusedYouTubeEnhancedHome
+    else
+      enhancedHome = result.focusedYouTubeEnhancedHome
   })
   chrome.storage.local.get('focusedYouTubeEHHideMenu', (result) => {
     if (!result) {
       chrome.storage.local.set({ focusedYouTubeEnhancedHome: eHHideMenu })
     }
-    eHHideMenu = result.focusedYouTubeEHHideMenu
+    else
+      eHHideMenu = result.focusedYouTubeEHHideMenu
   })
 }
 
