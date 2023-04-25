@@ -241,23 +241,29 @@ const setSwitches = (id) => {
         chrome.storage.local.set({ focusedYouTubeEnhancedHome: true })
       }
     })
-    chrome.storage.local.get('focusedYouTubeEHHideMenu', (result) => {
-      if (result.focusedYouTubeEHHideMenu)
-        setSwitches(3)
+    chrome.storage.local.get('focusedYouTubeEHHideMenu', (hideMenuResult) => {
+      chrome.storage.local.get('focusedYouTubeEnhancedHome', (enhancedHomeResult) => {
+        if (!enhancedHomeResult.focusedYouTubeEnhancedHome && hideMenuResult.focusedYouTubeEHHideMenu)
+          setSwitches(3)
+      })
     })
   } else if (id === 3) {
     chrome.storage.local.get('focusedYouTubeEHHideMenu', (result) => {
-      if (result.focusedYouTubeEHHideMenu) {
-        document
-          .getElementsByClassName('toggleSwitch')
-        [id].classList.remove('active')
-        chrome.storage.local.set({ focusedYouTubeEHHideMenu: false })
-      } else {
-        document
-          .getElementsByClassName('toggleSwitch')
-        [id].classList.add('active')
-        chrome.storage.local.set({ focusedYouTubeEHHideMenu: true })
-      }
+      chrome.storage.local.get('focusedYouTubeEnhancedHome', (enhancedHomeResult) => {
+        // if (enhancedHomeResult.focusedYouTubeEnhancedHome) {
+        if (result.focusedYouTubeEHHideMenu) {
+          document
+            .getElementsByClassName('toggleSwitch')
+          [id].classList.remove('active')
+          chrome.storage.local.set({ focusedYouTubeEHHideMenu: false })
+        } else {
+          document
+            .getElementsByClassName('toggleSwitch')
+          [id].classList.add('active')
+          chrome.storage.local.set({ focusedYouTubeEHHideMenu: true })
+        }
+        // }
+      })
     })
   }
 }
