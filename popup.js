@@ -204,12 +204,12 @@ const setSwitches = (id) => {
       if (result.focusedYouTubeHideNotifications) {
         document
           .getElementsByClassName('toggleSwitch')
-          [id].classList.remove('active')
+        [id].classList.remove('active')
         chrome.storage.local.set({ focusedYouTubeHideNotifications: false })
       } else {
         document
           .getElementsByClassName('toggleSwitch')
-          [id].classList.add('active')
+        [id].classList.add('active')
         chrome.storage.local.set({ focusedYouTubeHideNotifications: true })
       }
     })
@@ -218,12 +218,12 @@ const setSwitches = (id) => {
       if (result.focusedYouTubeHideChannelContent) {
         document
           .getElementsByClassName('toggleSwitch')
-          [id].classList.remove('active')
+        [id].classList.remove('active')
         chrome.storage.local.set({ focusedYouTubeHideChannelContent: false })
       } else {
         document
           .getElementsByClassName('toggleSwitch')
-          [id].classList.add('active')
+        [id].classList.add('active')
         chrome.storage.local.set({ focusedYouTubeHideChannelContent: true })
       }
     })
@@ -232,26 +232,30 @@ const setSwitches = (id) => {
       if (result.focusedYouTubeEnhancedHome) {
         document
           .getElementsByClassName('toggleSwitch')
-          [id].classList.remove('active')
+        [id].classList.remove('active')
         chrome.storage.local.set({ focusedYouTubeEnhancedHome: false })
       } else {
         document
           .getElementsByClassName('toggleSwitch')
-          [id].classList.add('active')
+        [id].classList.add('active')
         chrome.storage.local.set({ focusedYouTubeEnhancedHome: true })
       }
+    })
+    chrome.storage.local.get('focusedYouTubeEHHideMenu', (result) => {
+      if (result.focusedYouTubeEHHideMenu)
+        setSwitches(3)
     })
   } else if (id === 3) {
     chrome.storage.local.get('focusedYouTubeEHHideMenu', (result) => {
       if (result.focusedYouTubeEHHideMenu) {
         document
           .getElementsByClassName('toggleSwitch')
-          [id].classList.remove('active')
+        [id].classList.remove('active')
         chrome.storage.local.set({ focusedYouTubeEHHideMenu: false })
       } else {
         document
           .getElementsByClassName('toggleSwitch')
-          [id].classList.add('active')
+        [id].classList.add('active')
         chrome.storage.local.set({ focusedYouTubeEHHideMenu: true })
       }
     })
