@@ -7,6 +7,7 @@
   --text-color: #303030;
   --shaded-bg: #f0f0f0;
   --inlet-shaded: #e6e6e6;
+  --secondary-text: #666666;
 }
 
 * {
@@ -72,18 +73,41 @@ h2 {
   border-radius: 5px; 
   position: relative;
   bottom: 1px;
-  color: #666666;
-  background: #e6e6e6;
+  color: var(--secondary-text);
+  background: var(--shaded-bg);
   /* color: white;
   background: red; */
   font-family: 'Satoshi Bold';
   font-size: 14px;
 }
 
+p {
+  margin: 0;
+  margin-left: 30px;
+  padding: 0;
+  padding-top: 10px;
+  display: inline-block;
+  font-family: 'Satoshi Regular';
+  font-size: 11pt;
+  color: var(--text-);
+}
+
+a {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: var(--secondary-text);
+}
+
+a:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 #masterSwitchContainer {
   width: var(--popup-width);
-  height: calc(((var(--popup-width) - 70px) * 0.700158465) + 70px);
-  padding: 35px;
+  height: calc(((var(--popup-width) - 70px) * 0.700158465) + 60px);
+  padding: 30px 35px;
 }
 
 #masterSwitch {
@@ -132,7 +156,7 @@ h2 {
 .box {
   width: calc(100% - 2 * (15px));
   margin: 15px;
-  margin-top: calc(15px * 1);
+  margin-top: 10px;
   padding: 15px 15px 0px 15px;
   border-radius: 15px;
   border: none;
@@ -204,6 +228,24 @@ h2 {
   background: white;
 }
 
+#bottomStrip {
+  width: calc(100% - 30px - 30px);
+  margin: 0 0 15px 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: var(--secondary-text);
+  font-size: 13px;
+  font-family: 'Satoshi Regular';
+}
+
+.bottomIcon {
+  margin-left: 4px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background-color: #202020;
@@ -212,6 +254,7 @@ h2 {
     --text-color: #fff;
     --shaded-bg: #303030;
     --inlet-shaded: #262626;
+    --secondary-text: #a0a0a0;
   }
 
   .toggleSwitchKnob {
