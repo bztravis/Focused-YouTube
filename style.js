@@ -83,6 +83,10 @@ const setCSS = () => {
   #footer {
     display: none;
   }
+
+  ytd-merch-shelf-renderer {
+    display: none;
+  }
   `
     document.head.appendChild(general)
   } else {
@@ -116,10 +120,10 @@ const setCSS = () => {
     style.innerHTML = `
     #page-manager > ytd-browse > ytd-two-column-browse-results-renderer {opacity: 0; pointer-events: none;}
     /*  categories */
-.style-scope.ytd-feed-filter-chip-bar-renderer {
-  opacity: 0;
-  pointer-events: none;
-}
+    .style-scope.ytd-feed-filter-chip-bar-renderer {
+      opacity: 0;
+      pointer-events: none;
+    }
     `
     document.head.appendChild(style)
   }
