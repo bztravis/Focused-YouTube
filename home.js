@@ -68,7 +68,6 @@ const setCssHome = () => {
       position: fixed;
       top: 40vh;
       left: calc((100vw - 60vw - 40px) / 2);
-      opacity: 0;
     }
     
     #logo-icon {
@@ -78,7 +77,6 @@ const setCssHome = () => {
       position: fixed;
       top: calc(40vh - 180px);
       left: calc((100vw - (360px + 30px)) / 2);
-      opacity: 0;
     }
     
     
@@ -215,3 +213,4 @@ if (yTLogo) {
     resetForSearch()
   })
 }
+
