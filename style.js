@@ -141,7 +141,7 @@ const handleValues = (changes) => {
     //   `${master} ${hideNotifications} ${hideChannelContent} ${enhancedHome} ${eHHideMenu}`
     // )
     setCSS()
-  }, 100)
+  }, 1)
 }
 
 getValues()

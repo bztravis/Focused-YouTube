@@ -136,7 +136,7 @@ const handleValuesHome = (changes) => {
     //   `${master} ${hideNotifications} ${hideChannelContent} ${enhancedHome} ${eHHideMenu}`
     // )
     setCssHome()
-  }, 30)
+  }, 1)
 }
 
 getValuesHome()

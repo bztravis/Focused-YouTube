@@ -133,7 +133,7 @@ document
     tooltip.style.top = `${mouseY + 25}px`
   })
 
-const setSwitches = (id) => {
+const setSwitches = (id, primarySwitch) => {
   // alert(id)
   if (id === -1) {
     // initial call just confirm all values
@@ -241,10 +241,11 @@ const setSwitches = (id) => {
         chrome.storage.local.set({ focusedYouTubeEnhancedHome: true })
       }
     })
+    // turn off hide menu when turning off EH
     chrome.storage.local.get('focusedYouTubeEHHideMenu', (hideMenuResult) => {
       chrome.storage.local.get('focusedYouTubeEnhancedHome', (enhancedHomeResult) => {
-        if (!enhancedHomeResult.focusedYouTubeEnhancedHome && hideMenuResult.focusedYouTubeEHHideMenu)
-          setSwitches(3)
+        if (primarySwitch && !(enhancedHomeResult.focusedYouTubeEnhancedHome) && hideMenuResult.focusedYouTubeEHHideMenu)
+          setSwitches(3, false)
       })
     })
   } else if (id === 3) {
@@ -265,18 +266,25 @@ const setSwitches = (id) => {
         // }
       })
     })
+    // turn on EH when turning on hide menu
+    chrome.storage.local.get('focusedYouTubeEnhancedHome', (enhancedHomeResult) => {
+      chrome.storage.local.get('focusedYouTubeEHHideMenu', (hideMenuResult) => {
+        if (primarySwitch && !(enhancedHomeResult.focusedYouTubeEnhancedHome) && !(hideMenuResult.focusedYouTubeEHHideMenu))
+          setSwitches(2, false)
+      })
+    })
   }
 }
 
 const options = document.getElementsByClassName('option')
 for (let i = 0; i < options.length; i++) {
   options[i].addEventListener('click', () => {
-    setSwitches(i)
+    setSwitches(i, true)
   })
 }
 
 setMasterSwitchSkin()
-setSwitches(-1)
+setSwitches(-1, true)
 
 // add switch transitions after states load
 setTimeout(() => {
